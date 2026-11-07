@@ -18,7 +18,7 @@ return function(c, opts)
 		DiagnosticSignHint = { link = "GruberDarkerWisteriaSign" },
 		DiagnosticUnderlineHint = { link = "GruberDarkerWisteriaUnderline" },
 
-		DiagnosticUnnecessary = { link = "DiagnosticUnderlineHint" },
+		DiagnosticUnnecessary = { link = "Comment" },
 
 		---LspSaga floating windows
 		SagaNormal = { link = "NormalFloat" },

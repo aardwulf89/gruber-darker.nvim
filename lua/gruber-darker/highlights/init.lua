@@ -57,17 +57,32 @@ function M.build(c, opts, providers)
 	return groups
 end
 
+---Filetypes whose language server reports inactive preprocessor regions as `comment` semantic tokens
+local CLANGD_FILETYPES = { "c", "cpp", "objc", "objcpp", "cuda" }
+
 ---Set every highlight group and the terminal colours
 ---@param opts GruberDarkerOpts
 function M.apply(opts)
 	local c = M.resolve_palette(opts)
-	for name, spec in pairs(M.build(c, opts)) do
-		vim.api.nvim_set_hl(0, name, spec)
-	end
-	require("gruber-darker.highlights.terminal")(c)
+	local groups = M.build(c, opts)
+	-- Evaluate user code before touching any group so a failure cannot leave the theme half-applied
 	local overrides = opts.overrides
 	if type(overrides) == "function" then
 		overrides = overrides(c, opts)
+	end
+	for name, spec in pairs(groups) do
+		vim.api.nvim_set_hl(0, name, spec)
+	end
+	require("gruber-darker.highlights.terminal")(c)
+	if not opts.semantic_tokens then
+		-- Semantic highlights would otherwise override tree-sitter; see :h lsp-semantic-highlight
+		for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+			vim.api.nvim_set_hl(0, group, {})
+		end
+		-- clangd marks inactive preprocessor regions as comments
+		for _, ft in ipairs(CLANGD_FILETYPES) do
+			vim.api.nvim_set_hl(0, "@lsp.type.comment." .. ft, { link = "Comment" })
+		end
 	end
 	for name, spec in pairs(overrides or {}) do
 		vim.api.nvim_set_hl(0, name, spec)

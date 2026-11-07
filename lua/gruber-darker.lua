@@ -30,21 +30,6 @@ local function create_autocmds()
 			vim.cmd.setlocal("winhighlight=" .. M.SIDEBAR_WINHIGHLIGHT)
 		end,
 	})
-
-	-- This is a mitigation for new Nvim v0.9.0 lsp semantic highlights
-	-- overriding treesitter highlights.
-	-- TODO: link these to relevant treesitter groups in the future.
-	-- See :h lsp-semantic-highlight
-	vim.api.nvim_create_autocmd("ColorScheme", {
-		group = gruber_darker_group,
-		pattern = "*",
-		callback = function()
-			-- Hide all semantic highlights
-			for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
-				vim.api.nvim_set_hl(0, group, {})
-			end
-		end,
-	})
 end
 
 ---Clear current highlights, set Neovim global `colors_name` and apply the theme

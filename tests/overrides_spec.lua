@@ -56,4 +56,17 @@ return {
 		})
 		h.eq(require("gruber-darker.config").DEFAULTS.bold, true, "DEFAULTS.bold after setup path")
 	end,
+
+	["throwing overrides fn applies nothing"] = function()
+		h.reload()
+		vim.api.nvim_set_hl(0, "Normal", { fg = "#010101" })
+		require("gruber-darker").setup({
+			overrides = function()
+				error("boom")
+			end,
+		})
+		local ok = pcall(require("gruber-darker.highlights").apply, require("gruber-darker.config").get())
+		h.ok(not ok, "apply should fail")
+		h.eq(vim.api.nvim_get_hl(0, { name = "Normal" }).fg, 0x010101, "Normal untouched")
+	end,
 }

@@ -23,6 +23,15 @@ function M.hl(name)
 	return vim.api.nvim_get_hl(0, { name = name })
 end
 
+---Copy of a highlight spec without the `cterm` key, which `nvim_get_hl` adds for underline
+---@param spec table
+---@return table
+function M.strip_cterm(spec)
+	local out = vim.deepcopy(spec)
+	out.cterm = nil
+	return out
+end
+
 ---@param actual any
 ---@param expected any
 ---@param msg string

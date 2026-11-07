@@ -10,14 +10,12 @@ return function(c, opts)
 		---Comments documenting code
 		["@comment.documentation"] = { fg = c.green, italic = opts.italic.comments },
 		["@comment.luadoc"] = { link = "@comment.documentation" },
-		---Syntax/parser errors
-		["@error"] = {},
 		---Completely disable the highlight
 		["@none"] = { fg = c.none, bg = c.none },
 		---Various preprocessor directives & shebangs
-		["@preproc"] = { link = "PreProc" },
+		["@keyword.directive"] = { link = "PreProc" },
 		---Preprocessor definition directives
-		["@define"] = { link = "Define" },
+		["@keyword.directive.define"] = { link = "Define" },
 		---Symbolic operators (e.g. `+` / `*`)
 		["@operator"] = { link = "Operator" },
 
@@ -37,7 +35,7 @@ return function(c, opts)
 		---String documenting code (e.g. Python docstrings)
 		["@string.documentation"] = { link = "String" },
 		---Regular expressions
-		["@string.regex"] = { link = "Constant" },
+		["@string.regexp"] = { link = "Constant" },
 		---Escape sequences
 		["@string.escape"] = { link = "Constant" },
 		---Other special strings (e.g dates)
@@ -53,7 +51,7 @@ return function(c, opts)
 		---Numeric literals
 		["@number"] = { link = "Number" },
 		---Floating-point number literals
-		["@float"] = { link = "Float" },
+		["@number.float"] = { link = "Float" },
 
 		-- Functions
 
@@ -67,14 +65,14 @@ return function(c, opts)
 		["@function.macro"] = { link = "Macro" },
 
 		---Method definitions
-		["@method"] = { link = "Function" },
+		["@function.method"] = { link = "Function" },
 		---Method calls
 		-- ["@method.call"] = {},
 
 		---constructor calls and definitions
 		["@constructor"] = { link = "Function" },
 		---parameters of a function
-		["@parameter"] = { link = "Identifier" },
+		["@variable.parameter"] = { link = "Identifier" },
 
 		-- Keywords
 
@@ -90,14 +88,14 @@ return function(c, opts)
 		-- ["@keyword.return"] = {},
 
 		---keywords related to conditionals (e.g. `if` / `else`)
-		["@conditional"] = { fg = c.yellow },
+		["@keyword.conditional"] = { fg = c.yellow },
 		---ternary operator (e.g. `?` / `:`)
-		["@conditional.ternary"] = {},
+		["@keyword.conditional.ternary"] = { link = "Operator" },
 
 		---keywords related to loops (e.g. `for` / `while`)
-		["@repeat"] = { link = "Repeat" },
+		["@keyword.repeat"] = { link = "Repeat" },
 		---keywords related to debugging
-		["@debug"] = { link = "Debug" },
+		["@keyword.debug"] = { link = "Debug" },
 		---GOTO and other labels (e.g. `label:` in C)
 		["@label"] = { link = "Label" },
 		---keywords for including modules (e.g. `import` / `from` in Python)
@@ -117,14 +115,14 @@ return function(c, opts)
 		-- ["@type.qualifier"] = {},
 
 		---modifiers that affect storage in memory or life-time
-		["@storageclass"] = { link = "StorageClass" },
+		["@keyword.modifier"] = { link = "StorageClass" },
 		---attribute annotations (e.g. Python decorators)
 		-- I don't think this is supported anymore...
 		-- ["@attribute"] = { link = "GruberDarkerBrown" },
 		---object and struct fields
-		["@field"] = { link = "GruberDarkerNiagara" },
-		---similar to `@field`
-		["@property"] = { link = "GruberDarkerDarkNiagara" },
+		["@variable.member"] = { link = "GruberDarkerNiagara" },
+		---similar to `@variable.member`
+		["@property"] = { link = "@variable.member" },
 
 		-- Identifiers
 
@@ -147,24 +145,22 @@ return function(c, opts)
 
 		-- Text (mainly for markup languages)
 
-		---non-structured text
-		["@text"] = { link = "Normal" },
 		---bold text
-		["@text.strong"] = { link = "Bold" },
+		["@markup.strong"] = { link = "Bold" },
 		---text with emphasis
-		["@text.emphasis"] = { link = "Italic" },
+		["@markup.italic"] = { link = "Italic" },
 		---underlined text
-		["@text.underline"] = { link = "Underlined" },
+		["@markup.underline"] = { link = "Underlined" },
 		---strikethrough text
-		["@text.strike"] = { strikethrough = true },
+		["@markup.strikethrough"] = { strikethrough = true },
 		---text that is part of a title
-		["@text.title"] = { link = "Title" },
+		["@markup.heading"] = { link = "Title" },
 		---literal or verbatim text (e.g., inline code)
-		["@text.literal"] = { link = "Constant" },
+		["@markup.raw"] = { link = "Constant" },
 		---text quotations
 		-- ["@text.quote"] = {},
 		---URIs (e.g. hyperlinks)
-		["@text.uri"] = { fg = c.niagara, underline = opts.underline },
+		["@markup.link.url"] = { fg = c.niagara, underline = opts.underline },
 		---math environments (e.g. `$ ... $` in LaTeX)
 		-- ["@text.math"] = { link = "Special" },
 		---text environments of markup languages
@@ -172,29 +168,29 @@ return function(c, opts)
 		---text indicating the type of an environment
 		-- ["@text.environment.name"] = {},
 		---text references, footnotes, citations, etc.
-		["@text.reference"] = { link = "GruberDarkerYellowBold" },
+		["@markup.link"] = { link = "GruberDarkerYellowBold" },
 
 		---todo notes
-		["@text.todo"] = { link = "Todo" },
+		["@comment.todo"] = { link = "Todo" },
 		---info notes
-		["@text.note"] = { link = "Comment" },
+		["@comment.note"] = { link = "Comment" },
 		---warning notes
-		["@text.warning"] = { link = "WarningMsg" },
+		["@comment.warning"] = { link = "WarningMsg" },
 		---danger/error notes
-		["@text.danger"] = { link = "ErrorMsg" },
+		["@comment.error"] = { link = "ErrorMsg" },
 
 		---added text (for diff files)
-		["@text.diff.add"] = { link = "DiffAdd" },
+		["@diff.plus"] = { link = "DiffAdd" },
 		---deleted text (for diff files)
-		["@text.diff.delete"] = { link = "DiffDelete" },
-		["@text.diff.change"] = { link = "DiffChange" },
+		["@diff.minus"] = { link = "DiffDelete" },
+		["@diff.delta"] = { link = "DiffChange" },
 
 		-- Tags (used for XML-like tags)
 
 		---XML tag names
 		["@tag"] = { link = "Tag" },
 		---XML tag attributes
-		["@tag.attribute"] = { link = "@field" },
+		["@tag.attribute"] = { link = "@variable.member" },
 		---XML tag delimiters
 		["@tag.delimiter"] = { link = "Delimiter" },
 	}
