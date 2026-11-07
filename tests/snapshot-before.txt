@@ -1,0 +1,541 @@
+@attribute	{link = "Macro"}
+@attribute.builtin	{link = "Special"}
+@boolean	{link = "Boolean"}
+@character	{link = "Character"}
+@character.special	{link = "Constant"}
+@comment	{link = "Comment"}
+@comment.documentation	{cterm = {italic = true},italic = true,link = "GruberDarkerGreen"}
+@comment.error	{link = "DiagnosticError"}
+@comment.luadoc	{link = "@comment.documentation"}
+@comment.note	{link = "DiagnosticInfo"}
+@comment.todo	{link = "Todo"}
+@comment.warning	{link = "DiagnosticWarn"}
+@conditional	{fg = 16768307}
+@conditional.ternary	vim.empty_dict()
+@constant	{link = "Constant"}
+@constant.builtin	{link = "GruberDarkerYellow"}
+@constant.macro	{link = "Define"}
+@constructor	{link = "Function"}
+@debug	{link = "Debug"}
+@define	{link = "Define"}
+@diff.delta	{link = "Changed"}
+@diff.minus	{link = "Removed"}
+@diff.plus	{link = "Added"}
+@error	vim.empty_dict()
+@field	{link = "GruberDarkerNiagara"}
+@float	{link = "Float"}
+@function	{link = "Function"}
+@function.builtin	{link = "GruberDarkerYellow"}
+@function.macro	{link = "Macro"}
+@keyword	{link = "Keyword"}
+@label	{link = "Label"}
+@lsp.mod.deprecated	vim.empty_dict()
+@lsp.type.class	vim.empty_dict()
+@lsp.type.comment	vim.empty_dict()
+@lsp.type.decorator	vim.empty_dict()
+@lsp.type.enum	vim.empty_dict()
+@lsp.type.enumMember	vim.empty_dict()
+@lsp.type.event	vim.empty_dict()
+@lsp.type.function	vim.empty_dict()
+@lsp.type.interface	vim.empty_dict()
+@lsp.type.keyword	vim.empty_dict()
+@lsp.type.macro	vim.empty_dict()
+@lsp.type.method	vim.empty_dict()
+@lsp.type.modifier	vim.empty_dict()
+@lsp.type.namespace	vim.empty_dict()
+@lsp.type.number	vim.empty_dict()
+@lsp.type.operator	vim.empty_dict()
+@lsp.type.parameter	vim.empty_dict()
+@lsp.type.property	vim.empty_dict()
+@lsp.type.regexp	vim.empty_dict()
+@lsp.type.string	vim.empty_dict()
+@lsp.type.struct	vim.empty_dict()
+@lsp.type.type	vim.empty_dict()
+@lsp.type.typeParameter	vim.empty_dict()
+@lsp.type.variable	vim.empty_dict()
+@markup	{link = "Special"}
+@markup.heading	{link = "Title"}
+@markup.heading.1.delimiter.vimdoc	{bg = 1579032,cterm = {nocombine = true,underdouble = true},fg = 1579032,nocombine = true,sp = 15000804,underdouble = true}
+@markup.heading.2.delimiter.vimdoc	{bg = 1579032,cterm = {nocombine = true,underline = true},fg = 1579032,nocombine = true,sp = 15000804,underline = true}
+@markup.italic	{cterm = {italic = true},italic = true}
+@markup.link	{link = "Underlined"}
+@markup.strikethrough	{cterm = {strikethrough = true},strikethrough = true}
+@markup.strong	{bold = true,cterm = {bold = true}}
+@markup.underline	{cterm = {underline = true},underline = true}
+@method	{link = "Function"}
+@module	{link = "Structure"}
+@module.builtin	{link = "Special"}
+@none	vim.empty_dict()
+@number	{link = "Number"}
+@number.float	{link = "Float"}
+@operator	{link = "Operator"}
+@parameter	{link = "Identifier"}
+@preproc	{link = "PreProc"}
+@property	{link = "GruberDarkerDarkNiagara"}
+@punctuation	{link = "Delimiter"}
+@punctuation.bracket	{link = "GruberDarkerWisteria"}
+@punctuation.delimiter	{link = "Delimiter"}
+@punctuation.special	{link = "GruberDarkerBrown"}
+@repeat	{link = "Repeat"}
+@storageclass	{link = "StorageClass"}
+@string	{link = "String"}
+@string.documentation	{link = "String"}
+@string.escape	{link = "Constant"}
+@string.regex	{link = "Constant"}
+@string.regexp	{link = "@string.special"}
+@string.special	{link = "Constant"}
+@string.special.url	{link = "Underlined"}
+@tag	{link = "Tag"}
+@tag.attribute	{link = "@field"}
+@tag.builtin	{link = "Special"}
+@tag.delimiter	{link = "Delimiter"}
+@text	{link = "Normal"}
+@text.danger	{link = "ErrorMsg"}
+@text.diff.add	{link = "DiffAdd"}
+@text.diff.change	{link = "DiffChange"}
+@text.diff.delete	{link = "DiffDelete"}
+@text.emphasis	{link = "Italic"}
+@text.literal	{link = "Constant"}
+@text.note	{link = "Comment"}
+@text.reference	{link = "GruberDarkerYellowBold"}
+@text.strike	{cterm = {strikethrough = true},strikethrough = true}
+@text.strong	{link = "Bold"}
+@text.title	{link = "Title"}
+@text.todo	{link = "Todo"}
+@text.underline	{link = "Underlined"}
+@text.uri	{cterm = {underline = true},fg = 9873096,underline = true}
+@text.warning	{link = "WarningMsg"}
+@type	{link = "Type"}
+@type.builtin	{link = "GruberDarkerYellow"}
+@type.definition	{link = "Typedef"}
+@variable	{link = "Identifier"}
+@variable.builtin	{link = "GruberDarkerYellow"}
+@variable.parameter.builtin	{link = "Special"}
+Added	{ctermfg = 10,fg = 11794112}
+Bold	{bold = true,cterm = {bold = true}}
+Boolean	{link = "GruberDarkerYellowBold"}
+Changed	{ctermfg = 14,fg = 9238775}
+Character	{cterm = {italic = true},fg = 7592246,italic = true}
+CmpItemAbbr	{fg = 16777215}
+CmpItemAbbrDeprecated	vim.empty_dict()
+CmpItemAbbrMatch	{link = "GruberDarkerYellowBold"}
+CmpItemAbbrMatchFuzzy	{link = "GruberDarkerBrownBold"}
+CmpItemKind	{fg = 16777215}
+CmpItemKindColor	{fg = 16768307}
+CmpItemKindConstant	{link = "Constant"}
+CmpItemKindConstructor	{link = "Function"}
+CmpItemKindEnum	{link = "Type"}
+CmpItemKindEnumMember	{link = "Type"}
+CmpItemKindEvent	{fg = 13405244}
+CmpItemKindField	{link = "GruberDarkerNiagara"}
+CmpItemKindFile	{fg = 10393031}
+CmpItemKindFolder	{fg = 10393031}
+CmpItemKindFunction	{link = "Function"}
+CmpItemKindInterface	{link = "Type"}
+CmpItemKindKeyword	{link = "Keyword"}
+CmpItemKindMethod	{link = "Function"}
+CmpItemKindModule	{link = "Define"}
+CmpItemKindOperator	{link = "Operator"}
+CmpItemKindProperty	{link = "GruberDarkerDarkNiagara"}
+CmpItemKindReference	{fg = 10393031}
+CmpItemKindSnippet	{link = "GruberDarkerDarkNiagara"}
+CmpItemKindStruct	{link = "GruberDarkerNiagara"}
+CmpItemKindText	{fg = 16119285}
+CmpItemKindTypeParameter	{link = "Identifier"}
+CmpItemKindUnit	{link = "GruberDarkerDarkNiagara"}
+CmpItemKindValue	{link = "Type"}
+CmpItemKindVariable	{link = "Identifier"}
+CmpItemMenu	{fg = 16777215}
+CmpitemKindClass	{link = "Type"}
+ColorColumn	{bg = 4537665}
+Comment	{cterm = {italic = true},fg = 13405244,italic = true}
+CompileModeCheckResult	{link = "GruberDarkerWisteriaBold"}
+CompileModeCheckTarget	{link = "GruberDarkerWisteriaBold"}
+CompileModeCommandOutput	{link = "GruberDarkerNiagara"}
+CompileModeDirectoryMessage	{link = "GruberDarkerNiagara"}
+CompileModeError	{link = "GruberDarkerRed"}
+CompileModeInfo	{link = "GruberDarkerGreen"}
+CompileModeMessageCol	{link = "GruberDarkerGreen"}
+CompileModeMessageRow	{link = "GruberDarkerYellow"}
+CompileModeOutputFile	{link = "GruberDarkerYellowBold"}
+CompileModeWarning	{link = "GruberDarkerBrown"}
+ComplHint	{link = "NonText"}
+ComplHintMore	{link = "MoreMsg"}
+ComplMatchIns	vim.empty_dict()
+Conceal	{bg = 1579032,fg = 15000804}
+Conditional	{link = "GruberDarkerYellowBold"}
+Constant	{link = "GruberDarkerQuartz"}
+CurSearch	{link = "IncSearch"}
+Cursor	{bg = 16768307}
+CursorColumn	{bg = 4537665}
+CursorIM	{bg = 16768307}
+CursorLine	{bg = 2631720}
+CursorLineFold	{link = "FoldColumn"}
+CursorLineNr	{fg = 16768307}
+CursorLineSign	{link = "SignColumn"}
+Debug	{link = "GruberDarkerFg2"}
+Define	{link = "GruberDarkerQuartz"}
+Delimiter	{link = "GruberDarkerFg0"}
+DiagnosticDeprecated	{cterm = {strikethrough = true},sp = 16761017,strikethrough = true}
+DiagnosticError	{link = "GruberDarkerRedBold"}
+DiagnosticFloatingError	{link = "DiagnosticError"}
+DiagnosticFloatingHint	{link = "DiagnosticHint"}
+DiagnosticFloatingInfo	{link = "DiagnosticInfo"}
+DiagnosticFloatingOk	{link = "DiagnosticOk"}
+DiagnosticFloatingWarn	{link = "DiagnosticWarn"}
+DiagnosticHint	{link = "GruberDarkerWisteria"}
+DiagnosticInfo	{link = "GruberDarkerGreenBold"}
+DiagnosticOk	{ctermfg = 10,fg = 11794112}
+DiagnosticSignError	{link = "GruberDarkerRedSign"}
+DiagnosticSignHint	{link = "GruberDarkerWisteriaSign"}
+DiagnosticSignInfo	{link = "GruberDarkerGreenSign"}
+DiagnosticSignOk	{link = "DiagnosticOk"}
+DiagnosticSignWarn	{link = "GruberDarkerYellowSign"}
+DiagnosticUnderlineError	{link = "GruberDarkerRedUnderline"}
+DiagnosticUnderlineHint	{link = "GruberDarkerWisteriaUnderline"}
+DiagnosticUnderlineInfo	{link = "GruberDarkerGreenUnderline"}
+DiagnosticUnderlineOk	{cterm = {underline = true},sp = 11794112,underline = true}
+DiagnosticUnderlineWarn	{link = "GruberDarkerYellowUnderline"}
+DiagnosticUnnecessary	{link = "DiagnosticUnderlineHint"}
+DiagnosticVirtualLinesError	{link = "DiagnosticError"}
+DiagnosticVirtualLinesHint	{link = "DiagnosticHint"}
+DiagnosticVirtualLinesInfo	{link = "DiagnosticInfo"}
+DiagnosticVirtualLinesOk	{link = "DiagnosticOk"}
+DiagnosticVirtualLinesWarn	{link = "DiagnosticWarn"}
+DiagnosticVirtualTextError	{link = "DiagnosticError"}
+DiagnosticVirtualTextHint	{link = "DiagnosticHint"}
+DiagnosticVirtualTextInfo	{link = "DiagnosticInfo"}
+DiagnosticVirtualTextOk	{link = "DiagnosticOk"}
+DiagnosticVirtualTextWarn	{link = "DiagnosticWarn"}
+DiagnosticWarn	{link = "GruberDarkerYellowBold"}
+DiffAdd	{fg = 7592246}
+DiffChange	{fg = 16768307}
+DiffDelete	{fg = 16731992}
+DiffText	{fg = 16768307}
+DiffTextAdd	{link = "DiffText"}
+Directory	{link = "GruberDarkerNiagaraBold"}
+EndOfBuffer	{fg = 5392718}
+Error	{bg = 5832712,ctermbg = 9,ctermfg = 0,fg = 15659512}
+ErrorMsg	{bg = 16005185,fg = 16777215}
+Exception	{link = "GruberDarkerYellowBold"}
+Float	{link = "GruberDarkerWisteria"}
+FloatBorder	{fg = 5392718}
+FloatFooter	{link = "FloatTitle"}
+FloatShadow	{bg = 5198424,blend = 80,ctermbg = 0}
+FloatShadowThrough	{bg = 5198424,blend = 100,ctermbg = 0}
+FloatTitle	{link = "Title"}
+FoldColumn	{bg = 4537665,fg = 13405244}
+Folded	{bg = 4537665,cterm = {italic = true},fg = 13405244,italic = true}
+Function	{link = "GruberDarkerNiagara"}
+GitSignsAdd	{link = "DiffAdd"}
+GitSignsChange	{link = "DiffChange"}
+GitSignsDelete	{link = "DiffDelete"}
+GruberDarkerBg0	{fg = 1579032}
+GruberDarkerBg1	{fg = 2631720}
+GruberDarkerBg2	{fg = 4537665}
+GruberDarkerBg3	{fg = 4737096}
+GruberDarkerBg4	{fg = 5392718}
+GruberDarkerBg_1	{fg = 1052688}
+GruberDarkerBrown	{fg = 13405244}
+GruberDarkerBrownBold	{bold = true,cterm = {bold = true},fg = 13405244}
+GruberDarkerDarkNiagara	{fg = 5660531}
+GruberDarkerDarkNiagaraBold	{bold = true,cterm = {bold = true},fg = 5660531}
+GruberDarkerDarkRed	{fg = 13057087}
+GruberDarkerDarkRedBold	{bold = true,cterm = {bold = true},fg = 13057087}
+GruberDarkerDarkestNiagara	{fg = 3159360}
+GruberDarkerDarkestNiagaraBold	{bold = true,cterm = {bold = true},fg = 3159360}
+GruberDarkerFg0	{fg = 15000804}
+GruberDarkerFg1	{fg = 16053503}
+GruberDarkerFg2	{fg = 16119285}
+GruberDarkerGreen	{fg = 7592246}
+GruberDarkerGreenBold	{bold = true,cterm = {bold = true},fg = 7592246}
+GruberDarkerGreenSign	{fg = 7592246}
+GruberDarkerGreenUnderline	{cterm = {undercurl = true},sp = 7592246,undercurl = true}
+GruberDarkerLightRed	{fg = 16731992}
+GruberDarkerLightRedBold	{bold = true,cterm = {bold = true},fg = 16731992}
+GruberDarkerNiagara	{fg = 9873096}
+GruberDarkerNiagaraBold	{bold = true,cterm = {bold = true},fg = 9873096}
+GruberDarkerNiagaraSign	{fg = 9873096}
+GruberDarkerNiagaraUnderline	{cterm = {undercurl = true},sp = 9873096,undercurl = true}
+GruberDarkerQuartz	{fg = 9808287}
+GruberDarkerQuartzBold	{bold = true,cterm = {bold = true},fg = 9808287}
+GruberDarkerQuartzSign	{fg = 9808287}
+GruberDarkerQuartzUnderline	{cterm = {undercurl = true},sp = 9808287,undercurl = true}
+GruberDarkerRed	{fg = 16005185}
+GruberDarkerRedBold	{bold = true,cterm = {bold = true},fg = 16005185}
+GruberDarkerRedSign	{fg = 16005185}
+GruberDarkerRedUnderline	{cterm = {undercurl = true},sp = 16005185,undercurl = true}
+GruberDarkerWisteria	{fg = 10393031}
+GruberDarkerWisteriaBold	{bold = true,cterm = {bold = true},fg = 10393031}
+GruberDarkerWisteriaSign	{fg = 10393031}
+GruberDarkerWisteriaUnderline	{cterm = {undercurl = true},sp = 10393031,undercurl = true}
+GruberDarkerYellow	{fg = 16768307}
+GruberDarkerYellowBold	{bold = true,cterm = {bold = true},fg = 16768307}
+GruberDarkerYellowSign	{fg = 16768307}
+GruberDarkerYellowUnderline	{cterm = {undercurl = true},sp = 16768307,undercurl = true}
+Identifier	{link = "GruberDarkerFg1"}
+Ignore	{link = "Normal"}
+IncSearch	{bg = 16119285,fg = 0}
+Include	{link = "GruberDarkerQuartz"}
+Italic	{cterm = {italic = true},italic = true}
+Keyword	{link = "GruberDarkerYellowBold"}
+Label	{link = "GruberDarkerYellowBold"}
+LineNr	{fg = 5392718}
+LineNrAbove	{link = "LineNr"}
+LineNrBelow	{link = "LineNr"}
+LspCodeLens	{link = "NonText"}
+LspCodeLensSeparator	{link = "LspCodeLens"}
+LspInlayHint	{link = "NonText"}
+LspReferenceRead	{link = "LspReferenceText"}
+LspReferenceTarget	{link = "LspReferenceText"}
+LspReferenceText	{link = "Visual"}
+LspReferenceWrite	{link = "LspReferenceText"}
+LspSignatureActiveParameter	{link = "Visual"}
+Macro	{link = "GruberDarkerQuartz"}
+MatchParen	{bg = 10393031,fg = 15000804}
+ModeMsg	{link = "GruberDarkerFg2"}
+MoreMsg	{fg = 16119285}
+MsgArea	vim.empty_dict()
+MsgSeparator	{link = "StatusLine"}
+NonText	{link = "EndOfBuffer"}
+Normal	{bg = 1579032,fg = 15000804}
+NormalFloat	{bg = 2631720,fg = 15000804}
+NormalNC	{bg = 1579032,fg = 15000804}
+NormalSB	{bg = 1052688,fg = 15000804}
+Number	{link = "GruberDarkerWisteria"}
+NvimAnd	{link = "NvimBinaryOperator"}
+NvimArrow	{link = "Delimiter"}
+NvimAssignment	{link = "Operator"}
+NvimAssignmentWithAddition	{link = "NvimAugmentedAssignment"}
+NvimAssignmentWithConcatenation	{link = "NvimAugmentedAssignment"}
+NvimAssignmentWithSubtraction	{link = "NvimAugmentedAssignment"}
+NvimAugmentedAssignment	{link = "NvimAssignment"}
+NvimBinaryMinus	{link = "NvimBinaryOperator"}
+NvimBinaryOperator	{link = "NvimOperator"}
+NvimBinaryPlus	{link = "NvimBinaryOperator"}
+NvimCallingParenthesis	{link = "NvimParenthesis"}
+NvimColon	{link = "Delimiter"}
+NvimComma	{link = "Delimiter"}
+NvimComparison	{link = "NvimBinaryOperator"}
+NvimComparisonModifier	{link = "NvimComparison"}
+NvimConcat	{link = "NvimBinaryOperator"}
+NvimConcatOrSubscript	{link = "NvimConcat"}
+NvimContainer	{link = "NvimParenthesis"}
+NvimCurly	{link = "NvimSubscript"}
+NvimDict	{link = "NvimContainer"}
+NvimDivision	{link = "NvimBinaryOperator"}
+NvimDoubleQuote	{link = "NvimStringQuote"}
+NvimDoubleQuotedBody	{link = "NvimStringBody"}
+NvimDoubleQuotedEscape	{link = "NvimStringSpecial"}
+NvimDoubleQuotedUnknownEscape	{link = "NvimInvalidValue"}
+NvimEnvironmentName	{link = "NvimIdentifier"}
+NvimEnvironmentSigil	{link = "NvimOptionSigil"}
+NvimFigureBrace	{link = "NvimInternalError"}
+NvimFloat	{link = "NvimNumber"}
+NvimIdentifier	{link = "Identifier"}
+NvimIdentifierKey	{link = "NvimIdentifier"}
+NvimIdentifierName	{link = "NvimIdentifier"}
+NvimIdentifierScope	{link = "NvimIdentifier"}
+NvimIdentifierScopeDelimiter	{link = "NvimIdentifier"}
+NvimInternalError	{bg = 16711680,ctermbg = 9,ctermfg = 9,fg = 16711680}
+NvimInvalid	{link = "Error"}
+NvimInvalidAnd	{link = "NvimInvalidBinaryOperator"}
+NvimInvalidArrow	{link = "NvimInvalidDelimiter"}
+NvimInvalidAssignment	{link = "NvimInvalid"}
+NvimInvalidAssignmentWithAddition	{link = "NvimInvalidAugmentedAssignment"}
+NvimInvalidAssignmentWithConcatenation	{link = "NvimInvalidAugmentedAssignment"}
+NvimInvalidAssignmentWithSubtraction	{link = "NvimInvalidAugmentedAssignment"}
+NvimInvalidAugmentedAssignment	{link = "NvimInvalidAssignment"}
+NvimInvalidBinaryMinus	{link = "NvimInvalidBinaryOperator"}
+NvimInvalidBinaryOperator	{link = "NvimInvalidOperator"}
+NvimInvalidBinaryPlus	{link = "NvimInvalidBinaryOperator"}
+NvimInvalidCallingParenthesis	{link = "NvimInvalidParenthesis"}
+NvimInvalidColon	{link = "NvimInvalidDelimiter"}
+NvimInvalidComma	{link = "NvimInvalidDelimiter"}
+NvimInvalidComparison	{link = "NvimInvalidBinaryOperator"}
+NvimInvalidComparisonModifier	{link = "NvimInvalidComparison"}
+NvimInvalidConcat	{link = "NvimInvalidBinaryOperator"}
+NvimInvalidConcatOrSubscript	{link = "NvimInvalidConcat"}
+NvimInvalidContainer	{link = "NvimInvalidParenthesis"}
+NvimInvalidCurly	{link = "NvimInvalidSubscript"}
+NvimInvalidDelimiter	{link = "NvimInvalid"}
+NvimInvalidDict	{link = "NvimInvalidContainer"}
+NvimInvalidDivision	{link = "NvimInvalidBinaryOperator"}
+NvimInvalidDoubleQuote	{link = "NvimInvalidStringQuote"}
+NvimInvalidDoubleQuotedBody	{link = "NvimInvalidStringBody"}
+NvimInvalidDoubleQuotedEscape	{link = "NvimInvalidStringSpecial"}
+NvimInvalidDoubleQuotedUnknownEscape	{link = "NvimInvalidValue"}
+NvimInvalidEnvironmentName	{link = "NvimInvalidIdentifier"}
+NvimInvalidEnvironmentSigil	{link = "NvimInvalidOptionSigil"}
+NvimInvalidFigureBrace	{link = "NvimInvalidDelimiter"}
+NvimInvalidFloat	{link = "NvimInvalidNumber"}
+NvimInvalidIdentifier	{link = "NvimInvalidValue"}
+NvimInvalidIdentifierKey	{link = "NvimInvalidIdentifier"}
+NvimInvalidIdentifierName	{link = "NvimInvalidIdentifier"}
+NvimInvalidIdentifierScope	{link = "NvimInvalidIdentifier"}
+NvimInvalidIdentifierScopeDelimiter	{link = "NvimInvalidIdentifier"}
+NvimInvalidLambda	{link = "NvimInvalidParenthesis"}
+NvimInvalidList	{link = "NvimInvalidContainer"}
+NvimInvalidMod	{link = "NvimInvalidBinaryOperator"}
+NvimInvalidMultiplication	{link = "NvimInvalidBinaryOperator"}
+NvimInvalidNestingParenthesis	{link = "NvimInvalidParenthesis"}
+NvimInvalidNot	{link = "NvimInvalidUnaryOperator"}
+NvimInvalidNumber	{link = "NvimInvalidValue"}
+NvimInvalidNumberPrefix	{link = "NvimInvalidNumber"}
+NvimInvalidOperator	{link = "NvimInvalid"}
+NvimInvalidOptionName	{link = "NvimInvalidIdentifier"}
+NvimInvalidOptionScope	{link = "NvimInvalidIdentifierScope"}
+NvimInvalidOptionScopeDelimiter	{link = "NvimInvalidIdentifierScopeDelimiter"}
+NvimInvalidOptionSigil	{link = "NvimInvalidIdentifier"}
+NvimInvalidOr	{link = "NvimInvalidBinaryOperator"}
+NvimInvalidParenthesis	{link = "NvimInvalidDelimiter"}
+NvimInvalidPlainAssignment	{link = "NvimInvalidAssignment"}
+NvimInvalidRegister	{link = "NvimInvalidValue"}
+NvimInvalidSingleQuote	{link = "NvimInvalidStringQuote"}
+NvimInvalidSingleQuotedBody	{link = "NvimInvalidStringBody"}
+NvimInvalidSingleQuotedQuote	{link = "NvimInvalidStringSpecial"}
+NvimInvalidSingleQuotedUnknownEscape	{link = "NvimInternalError"}
+NvimInvalidSpacing	{link = "ErrorMsg"}
+NvimInvalidString	{link = "NvimInvalidValue"}
+NvimInvalidStringBody	{link = "NvimStringBody"}
+NvimInvalidStringQuote	{link = "NvimInvalidString"}
+NvimInvalidStringSpecial	{link = "NvimStringSpecial"}
+NvimInvalidSubscript	{link = "NvimInvalidParenthesis"}
+NvimInvalidSubscriptBracket	{link = "NvimInvalidSubscript"}
+NvimInvalidSubscriptColon	{link = "NvimInvalidSubscript"}
+NvimInvalidTernary	{link = "NvimInvalidOperator"}
+NvimInvalidTernaryColon	{link = "NvimInvalidTernary"}
+NvimInvalidUnaryMinus	{link = "NvimInvalidUnaryOperator"}
+NvimInvalidUnaryOperator	{link = "NvimInvalidOperator"}
+NvimInvalidUnaryPlus	{link = "NvimInvalidUnaryOperator"}
+NvimInvalidValue	{link = "NvimInvalid"}
+NvimLambda	{link = "NvimParenthesis"}
+NvimList	{link = "NvimContainer"}
+NvimMod	{link = "NvimBinaryOperator"}
+NvimMultiplication	{link = "NvimBinaryOperator"}
+NvimNestingParenthesis	{link = "NvimParenthesis"}
+NvimNot	{link = "NvimUnaryOperator"}
+NvimNumber	{link = "Number"}
+NvimNumberPrefix	{link = "Type"}
+NvimOperator	{link = "Operator"}
+NvimOptionName	{link = "NvimIdentifier"}
+NvimOptionScope	{link = "NvimIdentifierScope"}
+NvimOptionScopeDelimiter	{link = "NvimIdentifierScopeDelimiter"}
+NvimOptionSigil	{link = "Type"}
+NvimOr	{link = "NvimBinaryOperator"}
+NvimParenthesis	{link = "Delimiter"}
+NvimPlainAssignment	{link = "NvimAssignment"}
+NvimRegister	{link = "SpecialChar"}
+NvimSingleQuote	{link = "NvimStringQuote"}
+NvimSingleQuotedBody	{link = "NvimStringBody"}
+NvimSingleQuotedQuote	{link = "NvimStringSpecial"}
+NvimSingleQuotedUnknownEscape	{link = "NvimInternalError"}
+NvimSpacing	{link = "Normal"}
+NvimString	{link = "String"}
+NvimStringBody	{link = "NvimString"}
+NvimStringQuote	{link = "NvimString"}
+NvimStringSpecial	{link = "SpecialChar"}
+NvimSubscript	{link = "NvimParenthesis"}
+NvimSubscriptBracket	{link = "NvimSubscript"}
+NvimSubscriptColon	{link = "NvimSubscript"}
+NvimTernary	{link = "NvimOperator"}
+NvimTernaryColon	{link = "NvimTernary"}
+NvimUnaryMinus	{link = "NvimUnaryOperator"}
+NvimUnaryOperator	{link = "NvimOperator"}
+NvimUnaryPlus	{link = "NvimUnaryOperator"}
+OkMsg	{ctermfg = 10,fg = 11794112}
+Operator	{fg = 15000804}
+Pmenu	{bg = 2631720,fg = 15000804}
+PmenuBorder	{link = "Pmenu"}
+PmenuExtra	{link = "Pmenu"}
+PmenuExtraSel	{link = "PmenuSel"}
+PmenuKind	{link = "Pmenu"}
+PmenuKindSel	{link = "PmenuSel"}
+PmenuMatch	{bold = true,cterm = {bold = true}}
+PmenuMatchSel	{bold = true,cterm = {bold = true}}
+PmenuSbar	{bg = 1579032}
+PmenuSel	{bg = 4537665,fg = 15000804}
+PmenuShadow	{link = "FloatShadow"}
+PmenuShadowThrough	{link = "FloatShadowThrough"}
+PmenuThumb	{bg = 1579032}
+PreCondit	{link = "GruberDarkerQuartz"}
+PreInsert	{link = "Added"}
+PreProc	{link = "GruberDarkerQuartz"}
+Question	{fg = 9873096}
+QuickFixLine	{bg = 4537665,bold = true,cterm = {bold = true}}
+RainbowDelimiterBlue	{fg = 9873096}
+RainbowDelimiterCyan	{fg = 9808287}
+RainbowDelimiterGreen	{fg = 7592246}
+RainbowDelimiterOrange	{fg = 13405244}
+RainbowDelimiterRed	{fg = 16731992}
+RainbowDelimiterViolet	{fg = 10393031}
+RainbowDelimiterYellow	{fg = 16768307}
+RedrawDebugClear	{bg = 7033600,ctermbg = 11,ctermfg = 0}
+RedrawDebugComposed	{bg = 21795,ctermbg = 10,ctermfg = 0}
+RedrawDebugNormal	{cterm = {reverse = true},reverse = true}
+RedrawDebugRecompose	{bg = 5832712,ctermbg = 9,ctermfg = 0}
+Removed	{ctermfg = 9,fg = 16761017}
+Repeat	{link = "GruberDarkerYellowBold"}
+SagaBorder	{link = "FloatBorder"}
+SagaNormal	{link = "NormalFloat"}
+Search	{bg = 16053503,fg = 5660531}
+SignColumn	{fg = 4537665}
+SnippetTabstop	{link = "Visual"}
+SnippetTabstopActive	{link = "SnippetTabstop"}
+Special	{link = "GruberDarkerYellow"}
+SpecialChar	{link = "GruberDarkerYellow"}
+SpecialComment	{link = "GruberDarkerWisteriaBold"}
+SpecialKey	{fg = 16119285}
+SpellBad	{link = "GruberDarkerRedUnderline"}
+SpellCap	{cterm = {undercurl = true},undercurl = true}
+SpellLocal	{cterm = {undercurl = true},undercurl = true}
+SpellRare	{cterm = {undercurl = true},undercurl = true}
+Statement	{fg = 16768307}
+StatusLine	{bg = 2631720,fg = 16777215}
+StatusLineNC	{bg = 2631720,fg = 9808287}
+StatusLineTerm	{link = "StatusLine"}
+StatusLineTermNC	{link = "StatusLineNC"}
+StderrMsg	{link = "ErrorMsg"}
+StdoutMsg	vim.empty_dict()
+StorageClass	{link = "GruberDarkerYellowBold"}
+String	{cterm = {italic = true},fg = 7592246,italic = true}
+Structure	{link = "GruberDarkerYellowBold"}
+Substitute	{link = "Search"}
+TabLine	vim.empty_dict()
+TabLineFill	{bg = 2631720,fg = 5392718}
+TabLineSel	{bold = true,cterm = {bold = true},fg = 16768307}
+Tag	{link = "GruberDarkerYellow"}
+TelescopeBorder	{link = "FloatBorder"}
+TelescopeMatching	{link = "GruberDarkerYellowBold"}
+TelescopeMultiSelection	{link = "CursorLine"}
+TelescopeNormal	vim.empty_dict()
+TelescopePromptPrefix	{link = "GruberDarkerNiagara"}
+TelescopeSelection	{bg = 2631720,fg = 16119285}
+TelescopeSelectionCaret	{link = "GruberDarkerYellow"}
+TelescopeTitle	{fg = 16777215}
+TermCursor	{bg = 16768307}
+Title	{link = "GruberDarkerQuartz"}
+Todo	{bg = 16768307,fg = 1579032}
+Type	{link = "GruberDarkerQuartz"}
+Typedef	{link = "GruberDarkerYellowBold"}
+Underlined	{cterm = {underline = true},fg = 10393031,underline = true}
+VertSplit	{bg = 2631720,fg = 16119285}
+Visual	{bg = 4537665}
+VisualNOS	{link = "GruberDarkerRed"}
+WarningMsg	{link = "GruberDarkerRed"}
+Whitespace	{fg = 5392718}
+WildMenu	{bg = 16768307,fg = 0}
+WinBar	{bg = 460813,bold = true,cterm = {bold = true},fg = 10198692}
+WinBarNC	{bg = 460813,cterm = {bold = true},fg = 10198692}
+WinSeparator	{bold = true,cterm = {bold = true},fg = 4537665}
+diffAdded	{link = "DiffAdd"}
+diffLine	{link = "DiffChange"}
+diffRemoved	{link = "DiffDelete"}
+lCursor	{bg = 16768307}
+markdownBold	{link = "GruberDarkerYellowBold"}
+markdownCode	{fg = 7592246}
+markdownCodeBlock	{fg = 7592246}
+markdownCodeDelimiter	{cterm = {italic = true},fg = 13405244,italic = true}
+markdownError	{bg = 2631720,fg = 15000804}
+markdownHeadingDelimiter	{bold = true,cterm = {bold = true},fg = 9873096}
+markdownItalic	{cterm = {italic = true},fg = 10393031,italic = true}
