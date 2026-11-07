@@ -1,27 +1,63 @@
 local M = {}
 
----@class HighlightsProvider
----@field highlights table<string, Highlight>
----@field setup fun() Set highlights
+---@alias GruberDarkerProvider fun(c: table<string, string>, opts: GruberDarkerOpts): table<string, vim.api.keyset.highlight>
 
----@type HighlightsProvider[]
-local providers = {
-	require("gruber-darker.highlights.colorscheme"),
-	require("gruber-darker.highlights.lsp"),
-	require("gruber-darker.highlights.vim"),
-	require("gruber-darker.highlights.terminal"),
-	require("gruber-darker.highlights.treesitter"),
-	require("gruber-darker.highlights.cmp"),
-	require("gruber-darker.highlights.telescope"),
-	require("gruber-darker.highlights.rainbow"),
-	require("gruber-darker.highlights.compile-mode"),
-}
+---@class GruberDarkerProviderEntry
+---@field name string
+---@field fn GruberDarkerProvider
 
----Set highlights for configured providers
-function M.setup()
-	for _, provider in ipairs(providers) do
-		provider:setup()
+---Provider modules under `gruber-darker.highlights`, in application order
+local PROVIDERS = { "colorscheme", "vim", "lsp", "treesitter", "cmp", "telescope", "rainbow", "compile-mode" }
+
+---@return GruberDarkerProviderEntry[]
+local function default_providers()
+	local list = {}
+	for _, name in ipairs(PROVIDERS) do
+		table.insert(list, { name = name, fn = require("gruber-darker.highlights." .. name) })
 	end
+	return list
+end
+
+---Resolve the palette used to build highlights
+---@param opts GruberDarkerOpts
+---@return table<string, string>
+function M.resolve_palette(opts)
+	return vim.deepcopy(require("gruber-darker.palette"))
+end
+
+---Merge every provider's groups into one table, rejecting duplicate group names
+---@param c table<string, string> resolved palette
+---@param opts GruberDarkerOpts
+---@param providers? GruberDarkerProviderEntry[] defaults to the built-in providers
+---@return table<string, vim.api.keyset.highlight>
+function M.build(c, opts, providers)
+	providers = providers or default_providers()
+	local groups = {}
+	-- lower-cased group name -> provider name; Neovim group names are case-insensitive
+	local owners = {}
+	for _, provider in ipairs(providers) do
+		for name, spec in pairs(provider.fn(c, opts)) do
+			local key = name:lower()
+			if owners[key] then
+				error(
+					string.format("gruber-darker: duplicate highlight group %s in %s and %s", name, owners[key], provider.name)
+				)
+			end
+			owners[key] = provider.name
+			groups[name] = spec
+		end
+	end
+	return groups
+end
+
+---Set every highlight group and the terminal colours
+---@param opts GruberDarkerOpts
+function M.apply(opts)
+	local c = M.resolve_palette(opts)
+	for name, spec in pairs(M.build(c, opts)) do
+		vim.api.nvim_set_hl(0, name, spec)
+	end
+	require("gruber-darker.highlights.terminal")(c)
 	vim.opt.guicursor:append("a:Cursor/lCursor")
 end
 

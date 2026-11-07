@@ -2,6 +2,9 @@ local config = require("gruber-darker.config")
 
 local M = {}
 
+---`winhighlight` applied to sidebar-like windows (quickfix, help)
+M.SIDEBAR_WINHIGHLIGHT = "Normal:NormalSB,SignColumn:SignColumnSB"
+
 ---Delete GruberDarker autocmds when the
 ---theme changes to something else
 ---@package
@@ -24,14 +27,14 @@ local function create_autocmds()
 		group = gruber_darker_group,
 		pattern = "qf,help",
 		callback = function()
-			vim.cmd.setlocal("winhighlight=Normal:NormalSB,SignColumn:SignColumnSB")
+			vim.cmd.setlocal("winhighlight=" .. M.SIDEBAR_WINHIGHLIGHT)
 		end,
 	})
 
 	-- This is a mitigation for new Nvim v0.9.0 lsp semantic highlights
 	-- overriding treesitter highlights.
-  -- TODO: link these to relevant treesitter groups in the future.
-  -- See :h lsp-semantic-highlight
+	-- TODO: link these to relevant treesitter groups in the future.
+	-- See :h lsp-semantic-highlight
 	vim.api.nvim_create_autocmd("ColorScheme", {
 		group = gruber_darker_group,
 		pattern = "*",
@@ -44,10 +47,8 @@ local function create_autocmds()
 	})
 end
 
----Clear current highlights and set Neovim global `colors_name`
+---Clear current highlights, set Neovim global `colors_name` and apply the theme
 function M.load()
-	local highlights = require("gruber-darker.highlights")
-
 	if vim.g.colors_name then
 		vim.cmd.hi("clear")
 	end
@@ -55,13 +56,10 @@ function M.load()
 	vim.opt.termguicolors = true
 	vim.g.colors_name = "gruber-darker"
 
-	highlights.setup()
+	require("gruber-darker.highlights").apply(config.get())
 
 	create_autocmds()
 end
-
----Change colorscheme to GruberDarker
-function M.colorscheme() end
 
 ---GruberDarker configuration bootstrapper
 ---@param opts? GruberDarkerOpts

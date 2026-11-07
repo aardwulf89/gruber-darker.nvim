@@ -15,9 +15,14 @@
 ---@field italic table<ItalicType, boolean>
 ---@field undercurl boolean
 ---@field underline boolean
+---@field palette table<string, string> overrides for base palette colours, by name
+---@field overrides table<string, vim.api.keyset.highlight>|GruberDarkerProvider replaces groups' specs, applied last
+---@field semantic_tokens boolean
+
+local M = {}
 
 ---@type GruberDarkerOpts
-local DEFAULTS = {
+M.DEFAULTS = {
 	bold = true,
 	invert = {
 		signs = false,
@@ -32,37 +37,25 @@ local DEFAULTS = {
 	},
 	undercurl = true,
 	underline = true,
+	palette = {},
+	overrides = {},
+	semantic_tokens = false,
 }
 
----@class ConfigMgr
----@field private resolved_opts GruberDarkerOpts
-local ConfigMgr = {}
-ConfigMgr.__index = ConfigMgr
+---@type GruberDarkerOpts|nil
+local resolved = nil
 
----@type ConfigMgr|nil
-local instance = nil
+---Set GruberDarker colorscheme options. Every call re-merges `opts` over the defaults.
+---@param opts? GruberDarkerOpts
+function M.setup(opts)
+	resolved = vim.tbl_deep_extend("force", {}, M.DEFAULTS, opts or {})
+end
 
 ---Get GruberDarker user preferences
 ---@return GruberDarkerOpts
 ---@nodiscard
-function ConfigMgr.get_opts()
-	if instance ~= nil then
-		return instance.resolved_opts
-	end
-
-	return DEFAULTS
+function M.get()
+	return resolved or M.DEFAULTS
 end
 
----Set GruberDarker colorscheme options
----@param opts? GruberDarkerOpts
-function ConfigMgr.setup(opts)
-	if instance ~= nil then
-		return
-	end
-
-	instance = setmetatable({
-		resolved_opts = vim.tbl_deep_extend("force", DEFAULTS, opts or {}),
-	}, ConfigMgr)
-end
-
-return ConfigMgr
+return M
