@@ -25,14 +25,14 @@ for _, file in ipairs(files) do
 			local ok, err = pcall(spec[name])
 			if ok then
 				passed = passed + 1
-				print("PASS " .. name)
+				io.write("PASS ", name, "\n")
 			else
 				failed = failed + 1
-				print("FAIL " .. name .. ": " .. tostring(err))
+				io.write("FAIL ", name, ": ", tostring(err), "\n")
 			end
 		end
 	end
 end
 
-print(string.format("%d passed, %d failed", passed, failed))
+io.write(string.format("%d passed, %d failed\n", passed, failed))
 os.exit(failed > 0 and 1 or 0)

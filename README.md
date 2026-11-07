@@ -10,6 +10,8 @@ _A modern Neovim port of a deftheme [adaptation][gruber-darker-theme] of an Emac
 
 ## Installation
 
+Requires Neovim >= 0.10.
+
 ### Native Package Manager (Neovim >= 0.12.0)
 
 ```lua
@@ -60,6 +62,9 @@ vim.cmd.colorscheme("gruber-darker")
   },
   undercurl = true,
   underline = true,
+  palette = {}, -- override base palette colors by name
+  overrides = {}, -- replace highlight groups; a table or a function
+  semantic_tokens = false,
 }
 ```
 
@@ -81,6 +86,52 @@ For example, with [Lazy](https://github.com/folke/lazy.nvim.git)...
     },
   },
 }
+```
+
+### Overriding colors
+
+`palette` replaces base colors by name (hex `#rrggbb` strings, or `"NONE"`).
+Every highlight group built from a color follows the change.
+
+```lua
+require("gruber-darker").setup({
+  palette = { niagara = "#5f87af" },
+})
+```
+
+`overrides` replaces the spec of individual highlight groups. It is applied
+last, so it wins over everything else. For example, to change `LineNr`:
+
+```lua
+require("gruber-darker").setup({
+  overrides = {
+    LineNr = { fg = "#ffdd33" },
+  },
+})
+```
+
+It can also be a function that receives the resolved palette and the
+resolved options, and returns the table of groups:
+
+```lua
+require("gruber-darker").setup({
+  overrides = function(c, opts)
+    return {
+      LineNr = { fg = c.yellow },
+    }
+  end,
+})
+```
+
+`require("gruber-darker.palette")` returns the base palette as hex strings.
+
+## Development
+
+Run the tests and the highlight snapshot guard:
+
+```sh
+nvim --headless --clean -l tests/run.lua
+nvim --headless --clean -l tests/snapshot.lua check
 ```
 
 ## Credits

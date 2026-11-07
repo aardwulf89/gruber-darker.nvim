@@ -18,11 +18,18 @@ local function default_providers()
 	return list
 end
 
----Resolve the palette used to build highlights
+---Resolve the palette used to build highlights: the base palette merged with `opts.palette`
 ---@param opts GruberDarkerOpts
 ---@return table<string, string>
 function M.resolve_palette(opts)
-	return vim.deepcopy(require("gruber-darker.palette"))
+	local c = vim.deepcopy(require("gruber-darker.palette"))
+	for key, value in pairs(opts.palette or {}) do
+		if type(value) ~= "string" or (value ~= "NONE" and not value:match("^#%x%x%x%x%x%x$")) then
+			error(('gruber-darker: invalid palette color "%s": %s'):format(key, vim.inspect(value)))
+		end
+		c[key] = value
+	end
+	return c
 end
 
 ---Merge every provider's groups into one table, rejecting duplicate group names
@@ -58,6 +65,13 @@ function M.apply(opts)
 		vim.api.nvim_set_hl(0, name, spec)
 	end
 	require("gruber-darker.highlights.terminal")(c)
+	local overrides = opts.overrides
+	if type(overrides) == "function" then
+		overrides = overrides(c, opts)
+	end
+	for name, spec in pairs(overrides or {}) do
+		vim.api.nvim_set_hl(0, name, spec)
+	end
 	vim.opt.guicursor:append("a:Cursor/lCursor")
 end
 

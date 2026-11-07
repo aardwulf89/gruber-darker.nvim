@@ -55,7 +55,7 @@ end
 ---@return GruberDarkerOpts
 ---@nodiscard
 function M.get()
-	return resolved or M.DEFAULTS
+	return resolved or vim.deepcopy(M.DEFAULTS)
 end
 
 return M
