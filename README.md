@@ -15,25 +15,25 @@ Requires Neovim >= 0.10.
 ### Native Package Manager (Neovim >= 0.12.0)
 
 ```lua
-vim.pack.add({ src = "https://github.com/blazkowolf/gruber-darker.nvim" })
+vim.pack.add({ src = "https://github.com/aardwulf89/gruber-darker.nvim" })
 ```
 
 ### Lazy (recommended)
 
 ```lua
-{ "blazkowolf/gruber-darker.nvim" }
+{ "aardwulf89/gruber-darker.nvim" }
 ```
 
 ### Packer
 
 ```lua
-use "blazkowolf/gruber-darker.nvim"
+use "aardwulf89/gruber-darker.nvim"
 ```
 
 ### Plug
 
 ```vim
-Plug 'blazkowolf/gruber-darker.nvim'
+Plug 'aardwulf89/gruber-darker.nvim'
 ```
 
 Then, somewhere in your `init.lua`, set the colorscheme
@@ -64,7 +64,7 @@ vim.cmd.colorscheme("gruber-darker")
   underline = true,
   palette = {}, -- override base palette colors by name
   overrides = {}, -- replace highlight groups; a table or a function
-  semantic_tokens = false,
+  semantic_tokens = false, -- true keeps Neovim's default LSP semantic highlights
 }
 ```
 
@@ -78,7 +78,7 @@ For example, with [Lazy](https://github.com/folke/lazy.nvim.git)...
 
 ```lua
 {
-  "blazkowolf/gruber-darker.nvim",
+  "aardwulf89/gruber-darker.nvim",
   opts = {
     bold = false,
     italic = {
@@ -87,6 +87,13 @@ For example, with [Lazy](https://github.com/folke/lazy.nvim.git)...
   },
 }
 ```
+
+### Semantic tokens
+
+By default (`semantic_tokens = false`) LSP semantic highlights are hidden so
+tree-sitter highlighting wins, except clangd inactive regions
+(`@lsp.type.comment.{c,cpp,objc,objcpp,cuda}`), which are dimmed as `Comment`.
+Set `semantic_tokens = true` to keep Neovim's default `@lsp` to tree-sitter links.
 
 ### Overriding colors
 
@@ -123,7 +130,18 @@ require("gruber-darker").setup({
 })
 ```
 
+The overrides function runs before the theme's highlights are applied, so use
+`c` and `opts` rather than reading existing groups with `nvim_get_hl`, and treat
+`opts` as read-only.
+
 `require("gruber-darker.palette")` returns the base palette as hex strings.
+
+### Upgrading
+
+- `require("gruber-darker.palette")` values are now hex strings; `:to_string()` is gone.
+- Removed: `M.colorscheme()`, `config.get_opts()`, `highlights.setup()` and the
+  providers' `.highlights` object tables.
+- Requires Neovim >= 0.10.
 
 ## Development
 

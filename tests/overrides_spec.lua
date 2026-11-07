@@ -69,4 +69,39 @@ return {
 		h.ok(not ok, "apply should fail")
 		h.eq(vim.api.nvim_get_hl(0, { name = "Normal" }).fg, 0x010101, "Normal untouched")
 	end,
+
+	["invalid palette leaves previous scheme intact"] = function()
+		h.reload()
+		local before = h.hl("Keyword")
+		require("gruber-darker").setup({ palette = { yellow = "#fff" } })
+		local okk = pcall(vim.cmd.colorscheme, "gruber-darker")
+		h.ok(not okk, "colorscheme should fail")
+		h.eq(h.hl("Keyword"), before, "Keyword unchanged")
+		h.eq(vim.g.colors_name, "gruber-darker", "colors_name kept")
+	end,
+
+	["throwing overrides fn leaves previous scheme intact"] = function()
+		h.reload()
+		local before = h.hl("Keyword")
+		require("gruber-darker").setup({
+			overrides = function()
+				error("boom")
+			end,
+		})
+		h.ok(not pcall(vim.cmd.colorscheme, "gruber-darker"), "colorscheme should fail")
+		h.eq(h.hl("Keyword"), before, "Keyword unchanged")
+	end,
+
+	["invalid override names the group"] = function()
+		local okk, err = pcall(h.reload, { overrides = { LineNr = { fg = "notacolor" } } })
+		h.ok(not okk and tostring(err):find('invalid override "LineNr"', 1, true), tostring(err))
+	end,
+
+	["invalid override leaves previous scheme intact"] = function()
+		h.reload()
+		local before = h.hl("Keyword")
+		require("gruber-darker").setup({ overrides = { LineNr = { fg = "notacolor" } } })
+		h.ok(not pcall(vim.cmd.colorscheme, "gruber-darker"), "colorscheme should fail")
+		h.eq(h.hl("Keyword"), before, "Keyword unchanged")
+	end,
 }

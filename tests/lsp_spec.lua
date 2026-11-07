@@ -19,4 +19,9 @@ return {
 		h.reload({ semantic_tokens = true })
 		h.eq(h.hl("@lsp.type.variable"), { link = "@variable" }, "default link kept")
 	end,
+
+	["override of an @lsp group survives semantic step"] = function()
+		h.reload({ overrides = { ["@lsp.type.variable"] = { fg = "#123456" } } })
+		h.eq(h.hl("@lsp.type.variable").fg, 0x123456, "@lsp.type.variable fg")
+	end,
 }

@@ -18,9 +18,9 @@ return {
 	PmenuThumb = true,
 	-- fix 9: fold column without a background
 	FoldColumn = true,
-	-- fix 10: DiffText distinct from DiffChange
+	-- fix 11: DiffText distinct from DiffChange
 	DiffText = true,
-	-- fix 11: visual-multi groups
+	-- fix 10: visual-multi groups
 	VM_Cursor = true,
 	VM_Insert = true,
 	VM_Extend = true,

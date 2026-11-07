@@ -7,7 +7,17 @@ local M = {}
 ---@field fn GruberDarkerProvider
 
 ---Provider modules under `gruber-darker.highlights`, in application order
-local PROVIDERS = { "colorscheme", "vim", "lsp", "treesitter", "cmp", "telescope", "rainbow", "compile-mode", "visual-multi" }
+local PROVIDERS = {
+	"colorscheme",
+	"vim",
+	"lsp",
+	"treesitter",
+	"cmp",
+	"telescope",
+	"rainbow",
+	"compile-mode",
+	"visual-multi",
+}
 
 ---@return GruberDarkerProviderEntry[]
 local function default_providers()
@@ -60,21 +70,50 @@ end
 ---Filetypes whose language server reports inactive preprocessor regions as `comment` semantic tokens
 local CLANGD_FILETYPES = { "c", "cpp", "objc", "objcpp", "cuda" }
 
----Set every highlight group and the terminal colours
+---@class GruberDarkerPlan
+---@field opts GruberDarkerOpts
+---@field c table<string, string>
+---@field groups table<string, vim.api.keyset.highlight>
+---@field overrides table<string, vim.api.keyset.highlight>
+
+---Set one override group, naming it in any error
+---@param ns integer
+---@param name string
+---@param spec vim.api.keyset.highlight
+local function set_override(ns, name, spec)
+	local ok, err = pcall(vim.api.nvim_set_hl, ns, name, spec)
+	if not ok then
+		error(('gruber-darker: invalid override "%s": %s'):format(name, tostring(err)), 0)
+	end
+end
+
+---Resolve the palette, build every group and evaluate the overrides without touching any highlight
 ---@param opts GruberDarkerOpts
-function M.apply(opts)
+---@return GruberDarkerPlan
+function M.prepare(opts)
 	local c = M.resolve_palette(opts)
 	local groups = M.build(c, opts)
-	-- Evaluate user code before touching any group so a failure cannot leave the theme half-applied
 	local overrides = opts.overrides
 	if type(overrides) == "function" then
 		overrides = overrides(c, opts)
 	end
-	for name, spec in pairs(groups) do
+	overrides = overrides or {}
+	local scratch = vim.api.nvim_create_namespace("gruber-darker-validate")
+	for name, spec in pairs(overrides) do
+		set_override(scratch, name, spec)
+		vim.api.nvim_set_hl(scratch, name, {})
+	end
+	return { opts = opts, c = c, groups = groups, overrides = overrides }
+end
+
+---Set every highlight group and the terminal colours from a prepared plan
+---@param plan GruberDarkerPlan
+function M.commit(plan)
+	for name, spec in pairs(plan.groups) do
 		vim.api.nvim_set_hl(0, name, spec)
 	end
-	require("gruber-darker.highlights.terminal")(c)
-	if not opts.semantic_tokens then
+	require("gruber-darker.highlights.terminal")(plan.c)
+	if not plan.opts.semantic_tokens then
 		-- Semantic highlights would otherwise override tree-sitter; see :h lsp-semantic-highlight
 		for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
 			vim.api.nvim_set_hl(0, group, {})
@@ -84,12 +123,18 @@ function M.apply(opts)
 			vim.api.nvim_set_hl(0, "@lsp.type.comment." .. ft, { link = "Comment" })
 		end
 	end
-	for name, spec in pairs(overrides or {}) do
-		vim.api.nvim_set_hl(0, name, spec)
+	for name, spec in pairs(plan.overrides) do
+		set_override(0, name, spec)
 	end
 	if not vim.o.guicursor:find("a:Cursor/lCursor", 1, true) then
 		vim.opt.guicursor:append("a:Cursor/lCursor")
 	end
+end
+
+---Set every highlight group and the terminal colours
+---@param opts GruberDarkerOpts
+function M.apply(opts)
+	M.commit(M.prepare(opts))
 end
 
 return M

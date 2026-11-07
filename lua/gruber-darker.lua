@@ -34,6 +34,10 @@ end
 
 ---Clear current highlights, set Neovim global `colors_name` and apply the theme
 function M.load()
+	local highlights = require("gruber-darker.highlights")
+	-- Validate and evaluate user input first so a failure leaves the previous scheme intact
+	local plan = highlights.prepare(config.get())
+
 	if vim.g.colors_name then
 		vim.cmd.hi("clear")
 	end
@@ -41,7 +45,7 @@ function M.load()
 	vim.opt.termguicolors = true
 	vim.g.colors_name = "gruber-darker"
 
-	require("gruber-darker.highlights").apply(config.get())
+	highlights.commit(plan)
 
 	create_autocmds()
 end
