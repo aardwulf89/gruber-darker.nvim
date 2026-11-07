@@ -75,8 +75,8 @@ return {
 	["old capture names are not defined"] = function()
 		h.reload()
 		for _, name in ipairs(OLD) do
-			-- Neovim itself registers the legacy names (hlexists is 1), so check the theme left them empty
-			h.eq(h.hl(name), {}, name)
+			-- hlexists() is 1 for any @-prefixed name in Neovim 0.12, so check the highlight table instead
+			h.eq(vim.api.nvim_get_hl(0, {})[name], nil, name)
 		end
 	end,
 }

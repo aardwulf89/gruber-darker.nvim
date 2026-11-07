@@ -28,7 +28,7 @@ return function(c, opts)
 		---Diff mode: Deleted line |diff.txt|
 		DiffDelete = { fg = c["red+1"], bg = c.none },
 		---Diff mode: Changed text within a changed line |diff.txt|
-		DiffText = { fg = c.yellow, bg = c.none },
+		DiffText = { fg = c.yellow, bg = c["bg+2"], bold = opts.bold },
 
 		---Fugitive highlights; might need separate provider for git related plugins
 		diffAdded = { link = "DiffAdd" },
@@ -55,7 +55,7 @@ return function(c, opts)
 		---Line used for closed folds
 		Folded = { fg = c.brown, bg = c["bg+2"], italic = opts.italic.folds },
 		---'foldcolumn'
-		FoldColumn = { fg = c.brown, bg = c["bg+2"] },
+		FoldColumn = { fg = c.brown, bg = c.none },
 		---column where |signs| are displayed
 		SignColumn = { fg = c["bg+2"], bg = c.none },
 		---column where |signs| are displayed in sidebar windows
@@ -96,7 +96,7 @@ return function(c, opts)
 		---Popup menu: scrollbar.
 		PmenuSbar = { bg = c.bg },
 		---Popup menu: Thumb of the scrollbar.
-		PmenuThumb = { bg = c.bg },
+		PmenuThumb = { bg = c["bg+4"] },
 
 		---|hit-enter| prompt and yes/no questions
 		Question = { fg = c.niagara },
@@ -244,5 +244,10 @@ return function(c, opts)
 		markdownBold = { link = "GruberDarkerYellowBold" },
 		markdownCodeDelimiter = { fg = c.brown, italic = true },
 		markdownError = { fg = c.fg, bg = c["bg+1"] },
+
+		-- Embedded languages: keep <script> bodies and inline CSS plain
+
+		javaScript = { link = "Normal" },
+		htmlCssDefinition = { link = "Normal" },
 	}
 end

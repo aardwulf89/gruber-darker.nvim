@@ -7,7 +7,7 @@ local M = {}
 ---@field fn GruberDarkerProvider
 
 ---Provider modules under `gruber-darker.highlights`, in application order
-local PROVIDERS = { "colorscheme", "vim", "lsp", "treesitter", "cmp", "telescope", "rainbow", "compile-mode" }
+local PROVIDERS = { "colorscheme", "vim", "lsp", "treesitter", "cmp", "telescope", "rainbow", "compile-mode", "visual-multi" }
 
 ---@return GruberDarkerProviderEntry[]
 local function default_providers()
@@ -87,7 +87,9 @@ function M.apply(opts)
 	for name, spec in pairs(overrides or {}) do
 		vim.api.nvim_set_hl(0, name, spec)
 	end
-	vim.opt.guicursor:append("a:Cursor/lCursor")
+	if not vim.o.guicursor:find("a:Cursor/lCursor", 1, true) then
+		vim.opt.guicursor:append("a:Cursor/lCursor")
+	end
 end
 
 return M

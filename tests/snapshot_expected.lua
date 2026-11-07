@@ -11,6 +11,20 @@ return {
 	-- capitalised; nvim_get_hl keys keep the defining case, so the old spelling shows as removed
 	CmpitemKindClass = true,
 	CmpItemKindClass = true,
+	-- fix 7: html script bodies and inline CSS stay plain
+	javaScript = true,
+	htmlCssDefinition = true,
+	-- fix 8: popup scrollbar thumb visible
+	PmenuThumb = true,
+	-- fix 9: fold column without a background
+	FoldColumn = true,
+	-- fix 10: DiffText distinct from DiffChange
+	DiffText = true,
+	-- fix 11: visual-multi groups
+	VM_Cursor = true,
+	VM_Insert = true,
+	VM_Extend = true,
+	VM_Mono = true,
 	-- fix 4: pre-0.10 tree-sitter captures renamed (old names dropped, new names added, links retargeted)
 	-- fix 5: DiagnosticUnnecessary dims with Comment
 	-- fix 6: clangd inactive regions and semantic-token handling
@@ -54,6 +68,7 @@ return {
 	["@storageclass"] = true,
 	["@string.regex"] = true,
 	["@string.regexp"] = true,
+	-- fix 4: link retarget @field -> @variable.member, same resolved colour
 	["@tag.attribute"] = true,
 	["@text"] = true,
 	["@text.danger"] = true,
